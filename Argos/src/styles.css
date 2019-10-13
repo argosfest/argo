@@ -1,0 +1,13 @@
+/* You can add global styles to this file, and also import other style files */
+@font-face{
+	font-family: "maven-pro-light";
+	src: url("/assets/fonte/maven-pro-light-300.otf");
+}
+body{
+    overflow-x: hidden;
+    margin: 0;
+    font-family: 'maven-pro-light';
+}
+::-webkit-scrollbar{
+    display: none;
+}

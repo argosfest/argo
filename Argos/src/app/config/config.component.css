@@ -1,0 +1,197 @@
+#config{
+    width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    padding-bottom: 100px;
+}
+#profilePic{
+    width: 100px;
+    margin: 0 auto;
+}
+#form form{
+    font-size: 20px
+}
+#form form input{
+    font-size: 20px;
+    height: 30px;
+    width: 100%;
+    text-align: center;
+}
+#submit{
+    width: 150px;
+    height: 40px;
+    font-size: 20px;
+    font-family: maven-pro-light;
+    font-weight: bold;
+    color: white;
+    background-color: #0984e3;
+    border: none;
+    box-shadow: 1px 1px 5px -3px black;
+    cursor: pointer;
+    transition: .3s;
+}
+#submit:hover{
+    width: 151.5px;
+    height: 40.4px;
+    font-size: 20.2px;
+    box-shadow: 1.01px 1.01px 5.05px -2px black;
+}
+#sair{
+    position: absolute;
+    top: 40px;
+    right: 20px;
+    height: 30px;
+    width: 75px;
+    background-color: red;
+    border: none;
+    color: white;
+    font-size: 20px;
+    font-family: maven-pro-light;
+    cursor: pointer;
+    box-shadow: 1px 1px 5px -2px black;
+    transition: .3s;
+}
+#sair:hover{
+    top: 38.5px;
+    right: 16.75px;
+    height: 33px;
+    width: 82.5px;
+    font-size: 22px;
+    box-shadow: 1.1px 1.1px 5.5px 0 black;
+}
+#logBox{
+    box-shadow: 4px 4px 10px 1px black;
+    border-color: rgba(0,0,0,0);
+    width: 250px;
+    border-width: 3px;
+    border-style: solid;
+    border-radius: 20px;
+    background-color: rgba(0, 0, 0, .6);
+    padding: 75px 10px 10px 10px;
+    height: 300px;
+    opacity: 1;
+    top: 45%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    color: white;
+}
+#logBox input{
+    padding-left: 12.5px;
+    outline: none;
+    padding-right: 12.5px;
+    width: calc(100% - 27px);
+    border-radius: 16.5px;
+    border-color: rgba(0,0,0,0);
+    height: 23px;
+    border-width: 0;
+    padding: 5px 12.5px;
+    margin-top: 4px;
+}
+#logBox input:focus{
+    box-shadow: inset 0px 0px 5px -1px #4d90fe;
+}
+#logImg{
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #0984e3;
+}
+#logImg img{
+    width: 60px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    z-index: 2;
+}
+#logBtn, #cadBtn{
+    cursor: pointer;
+    box-shadow: 1px 1px 5px -2px black;
+    font-size: 20px;
+    width: 100%;
+    margin-top: 10px;
+    background-color: #0984e3;
+    border: none;
+    padding: 5px;
+    border-radius: 16.333px;
+    color: white;
+    transition: .3s;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    position: relative;
+    top: 16px;
+}
+#logBtn:hover, #cadBtn:hover{
+    box-shadow: 1px 1px 5px -1px black;
+    cursor: pointer;
+    font-size: 20.2px;
+    width: 101%;
+    margin-top: 10.1px;
+    background-color: #0984e3;
+    border: none;
+    padding: 5.05px;
+    border-radius: 16.496px;
+    color: white;
+}
+#cadBtn{
+    top: 26px;
+}
+#teste{
+    position: absolute;
+    width: 100px;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -100%);
+    height: 50px;
+    background-color: rgba(0, 0, 0, .3);
+    border-radius: 150px 150px 0px 0px;
+    box-shadow: 1px 1px 5px 1px black;
+    z-index: 0;
+}
+#bottomHalf{
+    position: absolute;
+    width: 100px;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    height: 50px;
+    background-color: rgba(0, 0, 0, .3);
+    border-radius: 0px 0px 150px 150px;
+    box-shadow: 1px 1px 5px -2px black;
+    z-index: 0;
+}
+#backgnd{
+    width: 384px;
+    top: 30px;
+    left: 50%;
+    position: relative;
+    transform: translate(-50%, 0);
+}
+.soclog{
+    width: 50px;
+}
+#socsec{
+    display: block;
+    width: 80%;
+    margin: 20px auto;
+}
+.right{
+    float: right;
+}
+.left{
+    float: left;
+}
+@media only screen and (max-width: 600px){
+    #config{
+        width: calc(100% - 40px);
+    }
+    #backgnd{
+        width: 100vw;
+    }
+}

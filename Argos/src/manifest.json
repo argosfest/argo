@@ -1,0 +1,16 @@
+{
+    "name": "Argos",
+    "short_name": "Argos",
+    "theme_color": "#0984e3",
+    "background_color": "#0774c7",
+    "display": "standalone",
+    "scope": "/",
+    "start_url": "/",
+    "icons": [
+      {
+        "src": "assets/images/eye (1).png",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ]
+  }

@@ -1,0 +1,68 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div id="Header">
+  <img src="/assets/images/eye (1).png" alt="logo">
+  <nav>
+    <a routerLink="/" routerLinkActive="active">Home</a>
+    <a routerLink="/map" routerLinkActive="active">Mapa do Crime</a>
+    <a routerLinkActive="inactive" (click)="display(false)">Fazer Denúncia</a>
+    <a routerLink="/config" routerLinkActive="active">Configurações</a>
+  </nav>
+</div>
+<div id="content">
+  <router-outlet></router-outlet>
+</div>
+<div id="mobmenu">
+  <div id="home" class="mobMenuItem">
+    <img routerLink="/" routerLinkActive="active" *ngIf="location != 'Home'" src="/assets/images/home-emp.png" alt="">
+    <img *ngIf="location == 'Home'" src="/assets/images/home-full.png" alt="">
+  </div>
+  <div id="map" class="mobMenuItem">
+    <img routerLink="/map" routerLinkActive="active" *ngIf="location != '/map'" src="/assets/images/placeholder-emp.png" alt="">
+    <img *ngIf="location == '/map'" src="/assets/images/placeholder-full.png" alt="">
+  </div>
+  <div id="config" class="mobMenuItem">
+    <img *ngIf="location == '/config'" src="/assets/images/settings (1).png" alt="">
+    <img routerLink="/config" routerLinkActive="active" *ngIf="location != '/config'" src="/assets/images/settings (1)-emp.png" alt="">
+  </div>
+</div>
+<div id="emergency" (click)="display(false)">
+  <img src="/assets/images/alarm.png" alt="">
+</div>
+<div id="blackbg" (click)="display(true)">
+</div>
+<div id="denuncia">
+    <img id="closeDenuncia" (click)="display(true)" src="/assets/images/error.png" alt="">
+    <div id="form">
+      <h2>Nos ajude! Denuncie!</h2>
+      <hr>
+      <form [formGroup]="denunciar" (ngSubmit)="onSubmit(denunciar.value)">
+        <label for="tipo">O que está acontecendo?</label><br>
+        <select formControlName="tipo" name="tipo" id="type">
+          <option value="furto-de-carro">Furto de Carro</option>
+          <option value="violencia-domestica">Violência Doméstica</option>
+          <option value="perturbacao-sonora">Perturbação Sonora</option>
+          <option value="outro">Outro</option>
+        </select><br><br>
+        <label for="observacao">Poderia nos dar mais detalhes?</label><br>
+        <textarea formControlName="obs" name="obs" id="obs" cols="30" rows="10"></textarea><br><br>
+        <input formControlName="file" id="files" (change)="fileUpload($event)" type="file">
+        <button *ngIf="isMobile" id="captureBtn" (click)="abrirCam()"><img id="captureImg" src="/assets/images/photo-camera.png" alt=""></button>
+        <div id="filesPrev" >
+          <div *ngFor="let file of files" class="filesItem">
+            <img [src]="(file.imagem)? file.data : '/assets/images/file.png'" alt="">
+          </div>
+        </div>        
+        <br><br>
+        <button id="submitBtn" type="submit">DENUNCIAR</button>
+      </form>
+    </div>
+</div>
+<div id="camera">
+  <img id="closeCamera" (click)="closeCam()" src="/assets/images/errorShaddow.png" alt="">
+  <video id="player" controls='none' autoplay style="width: 100vw; height: 100vh; position: absolute; top: 0; left: 0; background-color: black"></video>
+  <canvas id="snapshot"></canvas>
+  <button id="accept" (click)="acceptPicture()"><img src="/assets/images/tick.png" alt=""></button>
+  <button id="deny" (click)="discardPicture()"><img src="/assets/images/cancel.png" alt=""></button>
+  <button id="cameraShot" (click)="capture()"><img src="/assets/images/photo-camera.png" alt=""></button>
+</div>
+

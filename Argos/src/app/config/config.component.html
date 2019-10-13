@@ -1,0 +1,47 @@
+<div id="config" *ngIf="authService.afAuth.user | async as user; else showLogin">
+  <div id="UserData">
+    <img id="profilePic" src="/assets/images/user.png" alt="">
+    <br>
+    <h2>Seu José</h2>
+    <hr>
+  </div>
+  <div id="form">
+    <h1>Atualizar Dados</h1>
+    <form [formGroup]="configForms" (ngSubmit)="onSubmit(configForms.value)">
+      <label for="nome">Nome:</label><br>
+      <input type="text" formControlName="nome" id="nome"><br><br>
+      <label for="cpf">CPF (XXX.XXX.XXX-XX)</label><br>
+      <input formControlName="cpf" type="text" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}"><br><br>
+      <label for="nascimento">Data de nascimento</label><br>
+      <input formControlName="nascimento" type="date"><br><br>
+      <label for="profpic">Imagem de Perfil</label><br>
+      <input formControlName="profpic" type="file"><br><br><br><br>
+      <button id="submit" type="submit">Atualizar</button>
+    </form>
+  </div>
+  <button id="sair" (click)="logout()">Sair</button>
+</div>
+<ng-template #showLogin>
+  <img id="backgnd" src="/assets/images/Argos1.png" alt="">
+  <div id="logBox">
+    <div id="bottomHalf"></div>
+    <div id="teste"></div>
+    <div id="logImg">
+      
+      
+      <img src="/assets/images/userWhite.png" alt="">
+    </div>
+    <form [formGroup]="logForm" (ngSubmit)="login(logForm.value)">
+      <label for="email">Email:</label><br>
+      <input type="email" name="email" formControlName="email"><br><br>
+      <label for="senha">Senha</label><br>
+      <input type="password" name="senha" formControlName="senha"><br><br>
+      <button id="logBtn">Entrar</button>
+    </form>
+    <button id="cadBtn" routerLink="/cadastro" routerLinkActive="active">Criar Conta</button>
+    <div id="socsec">
+      <img class="soclog left" src="/assets/images/md_5b0943596665b.png" alt="">
+      <img class="soclog right" src="/assets/images/Facebook-Logo-rounded.png" alt="">
+    </div>
+  </div>
+</ng-template>

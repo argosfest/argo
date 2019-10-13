@@ -1,0 +1,22 @@
+<div id="cadastro">
+  <div id="form">
+    <h1>Cadastro</h1>
+    <form [formGroup]="cadForm" (ngSubmit)="onSubmit(cadForm.value)">
+      <label for="email">Email</label><br>
+      <input formControlName="email" type="text"><br><br>
+      <label for="password">Senha</label><br>
+      <input formControlName="password" type="password"><br><br>
+      <label for="nome">Nome:</label><br>
+      <input type="text" formControlName="nome" id="nome"><br><br>
+      <label for="cpf">CPF (XXX.XXX.XXX-XX)</label><br>
+      <input formControlName="cpf" type="text" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}"><br><br>
+      <label for="nascimento">Data de nascimento</label><br>
+      <input formControlName="nascimento" type="date"><br><br>
+      <label for="profpic">Imagem de Perfil</label><br>
+      <input formControlName="profpic" type="file"><br><br>
+      <label for="conf">Insira uma imagem sua com um documento de identificação (RG)</label><br>
+      <input type="file" name="conf" id=""><br><br><br><br>
+      <button id="submit" type="submit">Cadastrar</button>
+    </form>
+  </div>
+</div>

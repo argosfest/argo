@@ -1,0 +1,9 @@
+#map{
+    width: 100vw;
+    height: calc(100vh - 30px);
+}
+@media only screen and (max-width: 600px){
+    #map{
+        height: calc(100vh - 50px);
+    }
+}
