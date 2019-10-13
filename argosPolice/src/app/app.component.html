@@ -1,0 +1,30 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<!--The content below is only a placeholder and can be replaced.-->
+<div id="Header">
+  <img src="/assets/images/eye (1).png" alt="logo">
+  <nav>
+    <a routerLink="/" routerLinkActive="active">Home</a>
+    <a routerLink="/map" routerLinkActive="active">Mapa do Crime</a>
+    <a routerLink="/chamados" routerLinkActive="active">Chamados em Atendimento</a>
+  </nav>
+</div>
+<div id="content">
+  <router-outlet></router-outlet>
+</div>
+<div id="mobmenu">
+  <div id="home" class="mobMenuItem">
+    <img routerLink="/" routerLinkActive="active" *ngIf="location != 'Home'" src="/assets/images/home-emp.png" alt="">
+    <img *ngIf="location == 'Home'" src="/assets/images/home-full.png" alt="">
+  </div>
+  <div id="map" class="mobMenuItem">
+    <img routerLink="/map" routerLinkActive="active" *ngIf="location != '/map'" src="/assets/images/placeholder-emp.png" alt="">
+    <img *ngIf="location == '/map'" src="/assets/images/placeholder-full.png" alt="">
+  </div>
+  <div id="chamados" class="mobMenuItem">
+    <img *ngIf="location == '/chamados'" src="/assets/images/test-full.png" alt="">
+    <img routerLink="/chamados" routerLinkActive="active" *ngIf="location != '/chamados'" src="/assets/images/test-emp.png" alt="">
+  </div>
+</div>
+
+
+

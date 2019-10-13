@@ -1,0 +1,88 @@
+#Header{
+    width: 100vw;
+    height: 30px;
+    background-color: #0984e3;
+    color: white;
+    display: block;
+}
+#Header::after{
+    z-index: 1;
+    top: 10px;
+    content: " ";
+    position: absolute;
+    width: 110%;
+    left: -5%;
+    height: 20px;
+    -moz-box-shadow: 0px 5px 4px #888;
+    -webkit-box-shadow: 0px 5px 4px #888;
+    box-shadow: 5px 5px 5px -3px #000;
+}
+#Header a{
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    margin: 5px 20px;
+    cursor: pointer;
+}
+#Header nav{
+    z-index: 2;
+    margin: 0 20px;
+    top: 50%;
+    position: relative;
+    transform: translate(0, -50%);
+}
+#Header img{
+    max-height: 30px;
+    width: auto;
+    margin: 0 20px;
+    position: relative;
+    float: left;
+    display: block;
+}
+#content{
+    width: 100vw;
+    height: calc(100vh - 30px);
+    overflow-y: scroll;
+}
+#mobmenu{
+    display: none;
+}
+@media only screen and (max-width: 600px){
+    #content{
+        height: calc(100vh - 50px);
+    }
+    #Header{
+        display: none;
+    }
+    #mobmenu{
+        display: block;
+        width: 100vw;
+        height: 50px;
+        bottom: 0;
+        position: fixed;
+        background-color: #0984e3;
+    }
+    #mobmenu::after{
+        z-index: 1;
+        top: 0;
+        content: " ";
+        position: absolute;
+        width: 110%;
+        left: -5%;
+        height: 20px;
+        box-shadow: -5px -5px 5px -5px #000;
+    }
+    .mobMenuItem{
+        display: block;
+        float: left;
+        width: 33.3%;
+    }
+    #mobmenu img{
+        height: 40px;
+        display: block;
+        left: 50%;
+        top: 7.5px;
+        position: relative;
+        transform: translate(-50%, 0);
+    }
+}

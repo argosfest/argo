@@ -1,0 +1,11 @@
+<agm-map id="map" [latitude]="latitude" [longitude]="longitude" [zoom]="15">
+  <agm-marker [latitude]="latitude" [longitude]="longitude" [iconUrl]="'/assets/images/security-guard (1).png'"></agm-marker>
+  <agm-marker *ngFor="let marker of markers" [latitude]="marker.coords.lat" [longitude]="marker.coords.lng" [iconUrl]="'/assets/images/siren.png'" (markerClick)="expandData(marker.type, marker.obs)"></agm-marker>
+</agm-map>
+<div id="dataExpand">
+  <img id="closeExpand" (click)="closeData()" src="../../assets/images/error.png" alt="">
+  <h1>{{ tipo }}</h1>
+  <hr>
+  <h2>{{ status }}</h2>
+</div>
+<div id="blackbgnd" (click)="closeData()"></div>
