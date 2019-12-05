@@ -14,11 +14,16 @@
     width: 100%;
     text-align: center;
 }
+#form input[type='text'], #form input[type='password'], #form input[type='date']{
+    border-radius: 15px;
+    box-shadow: 1px 1px 5px -3px;
+    border: solid 1px #ddd;
+}
 #submit{
     width: 150px;
     height: 40px;
     font-size: 20px;
-    font-family: maven-pro-light;
+    font-family: maven;
     font-weight: bold;
     color: white;
     background-color: #0984e3;

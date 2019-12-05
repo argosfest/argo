@@ -21,4 +21,5 @@ export class MapComponent implements OnInit {
       console.log("No support for geolocation")
     }
   }
+
 }

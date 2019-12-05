@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
 import { AgmCoreModule } from '@agm/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire';
@@ -8,27 +7,22 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { DeviceDetectorModule } from 'ngx-device-detector';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { DenunciaComponent } from './denuncia/denuncia.component';
-import { MapComponent } from './map/map.component';
 import { HomeComponent } from './home/home.component';
 import { ConfigComponent } from './config/config.component';
-import { UserAuthService } from './user-auth.service';
-import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { MapComponent } from './map/map.component';
+import { DenunciaComponent } from './denuncia/denuncia.component';
 import { FileUploadComponent } from './file-upload/file-upload.component';
-import { HttpClientModule } from '@angular/common/http';
 import { CadastroComponent } from './cadastro/cadastro.component';
 
+import { UserAuthService } from './user-auth.service';
 
+import { AppRoutingModule } from './app-routing.module';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
-const appRoutes: Routes = [  
-  { path: 'map', component: MapComponent },
-  { path: 'config', component: ConfigComponent },
-  { path: 'cadastro', component: CadastroComponent},
-
-  { path: '', component: HomeComponent }
-];
 
 @NgModule({
   declarations: [
@@ -36,13 +30,13 @@ const appRoutes: Routes = [
     DenunciaComponent,
     MapComponent,
     HomeComponent,
+    CadastroComponent,
     ConfigComponent,
-    FileUploadComponent,
-    CadastroComponent
+    FileUploadComponent
   ],
   imports: [
-    HttpClientModule,
-    AngularFirestoreModule,
+  	HttpClientModule,
+  	AngularFirestoreModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     FormsModule,
@@ -50,14 +44,21 @@ const appRoutes: Routes = [
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyChu10VWIPUubpw6ddw3vK2dXcjIn-k4hA'
     }),
+    DeviceDetectorModule.forRoot(),
     BrowserModule,
-    RouterModule.forRoot(
-      appRoutes,
-      {enableTracing: true}
-    ),
-    DeviceDetectorModule.forRoot()
+    AppRoutingModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [UserAuthService, {provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+/*import { RouterModule, Routes } from '@angular/router';
+
+const appRoutes: Routes = [  
+  { path: 'map', component: MapComponent },
+  { path: 'config', component: ConfigComponent },
+
+  { path: '', component: HomeComponent }
+];*/

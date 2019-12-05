@@ -1,9 +1,22 @@
+#denForm input[type='text']{
+    height: 30px;
+    border-radius: 15px;
+    box-shadow: 1px 1px 5px -3px;
+    border: solid 1px #ddd;
+    width: 100%;
+}
+#denForm textarea{
+    border-radius: 15px;
+    box-shadow: 1px 1px 5px -3px;
+    border: solid 1px #ddd;
+}
 #Header{
     width: 100vw;
     height: 30px;
     background-color: #0984e3;
     color: white;
     display: block;
+    position: relative;
 }
 #cameraShot{
     width: 100px;
@@ -74,7 +87,7 @@
 #snapshot.taken{
     z-index: 1;
     width: 95vw;
-    height: auto;
+    height: 95vh;
     border: 3px solid white;
 }
 #camera.show{
@@ -142,7 +155,7 @@
     position: absolute;
     top: 0;
     z-index: -1;
-    transition: .5s;
+    transition: .3s;
 }
 #blackbg.show{
     z-index: 3;
@@ -152,17 +165,16 @@
     z-index: 4;
     position: absolute;
     width: 70%;
-    height: 0;
+    height: calc(100vh - 40px);
     left: 50%;
     background-color: white;
     transform: translate(-50%, 0);
     top: -100vh;
-    transition: .5s;
+    transition: .3s;
     box-shadow: 1px 1px 5px -1px black;
     overflow-y: scroll;
 }
 #denuncia.show{
-    height: calc(100vh - 40px);
     top: 35px;
 }
 #closeDenuncia{
@@ -312,6 +324,7 @@
         display: block;
         float: left;
         width: 33.3%;
+        height: 100%;
     }
     #mobmenu img{
         height: 40px;

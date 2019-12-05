@@ -1,11 +1,10 @@
+
 import { Component } from '@angular/core';
 import { Location } from "@angular/common";
 import { Router } from '@angular/router';
 import { FormBuilder, Validators } from "@angular/forms";
 import { UserAuthService } from './user-auth.service';
 import { DeviceDetectorService } from 'ngx-device-detector';
-import { HttpClient, HttpParams } from '@angular/common/http';
-
 
 
 @Component({
@@ -13,7 +12,6 @@ import { HttpClient, HttpParams } from '@angular/common/http';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-
 export class AppComponent {
   status: null;
   location: string;
@@ -21,10 +19,12 @@ export class AppComponent {
   authService;
   isMobile;
   files: Array<{data: string, imagem: boolean}>;
+  Mac;
+  Dtype;
   
   arquivos: {};
 
-  constructor(location: Location, private router: Router, private formBuilder: FormBuilder, public userAuthService: UserAuthService, deviceService: DeviceDetectorService, public http: HttpClient) {
+  constructor(location: Location, private router: Router, private formBuilder: FormBuilder, public userAuthService: UserAuthService, deviceService: DeviceDetectorService) {
     router.events.subscribe(val => {
       if (location.path() != "") {
         this.location = location.path();
@@ -33,6 +33,7 @@ export class AppComponent {
       }
     });
     this.denunciar = formBuilder.group({
+      address: '',
       tipo: '',
       obs: '',
       file: [null, Validators.required]
@@ -47,20 +48,22 @@ export class AppComponent {
       console.log(status);
       this.status = status;
     })
+    
+    console.log(this.Mac);
   }
 
   onSubmit(data){
-    this.http.post("http://192.168.43.132:5000/register_event", {type: 'asdsad', obs:'adssad', coord: {long: '', lat: ''}}).subscribe((data) => {
-      console.log(data)
-    })
     console.log(data);
-    if((this.status != null || this.files != undefined) && (data.tipo != "" && data.obs != "")){
+    console.log(status);
+    console.log(this.status != null);
+    console.log(data.file);
+    console.log(data.file != {});
+    if(this.status != null || this.files != undefined){
       var dados = data;
       this.denunciar.reset();
       this.display(true);
       this.files = null;
     }
-
   }
 
   title = 'app';
@@ -96,7 +99,7 @@ export class AppComponent {
           this.files = [{data: reader.result.toString(), imagem: reader.result.toString().indexOf('image') == 5 }];
         }
         
-        var obj = <HTMLInputElement>document.getElementById('files');
+        var obj = <HTMLInputElement> document.getElementById('files');
         obj.value = '';
         console.log(this.files);
       };
@@ -106,24 +109,14 @@ export class AppComponent {
 
   videoTracks;
   abrirCam(){
+    console.log(PermissionStatus);
+    console.log(PermissionStatus.arguments);
+    console.log(PermissionStatus.length);
     var obj = document.getElementById('camera');
     obj.setAttribute('class', 'show');
-    navigator.mediaDevices.getUserMedia({
-      video: {
-        width: { 
-          min: 1280,
-          max: 1920,
-        },
-        height: {
-          min: 720,
-          max: 1080
-        },
-        facingMode: { 
-          exact: 'environment'
-        }
-      }
-    }).then((response) => {
-      var player = <HTMLVideoElement>document.getElementById('player'); 
+    navigator.mediaDevices.getUserMedia({video: {facingMode: 'environment', width: 720, height: 1280}}).then((response) => {
+      var player = <HTMLVideoElement> document.getElementById('player'); 
+      var snapshotCanvas = document.getElementById('snapshot');
       player.srcObject = response;
       console.log(response.getVideoTracks());
       this.videoTracks = response.getVideoTracks();
@@ -142,22 +135,18 @@ export class AppComponent {
     var player = <HTMLVideoElement>document.getElementById('player');
     var accept = document.getElementById('accept');
     var deny = document.getElementById('deny'); 
-    var snapshotCanvas = <HTMLCanvasElement>document.getElementById('snapshot');
+    var snapshotCanvas = <HTMLCanvasElement> document.getElementById('snapshot');
     var context = snapshotCanvas.getContext('2d');
     // Draw the video frame to the canvas.
-    snapshotCanvas.width = player.videoWidth;
-    snapshotCanvas.height = player.videoHeight;
-    snapshotCanvas.setAttribute('style', 'width: ' + player.videoWidth + "px; height: " + player.videoHeight + "px");
-    console.log(player.videoWidth);
-    context.drawImage(player, 0, 0, player.videoWidth, 
-        player.videoHeight);
+    context.drawImage(player, 0, 0, snapshotCanvas.width, 
+        snapshotCanvas.height);
     snapshotCanvas.setAttribute('class', 'taken');
     accept.setAttribute('class', 'taken');
     deny.setAttribute('class', 'taken');
   }
 
   acceptPicture(){
-    var snapshotCanvas = <HTMLCanvasElement>document.getElementById('snapshot');
+    var snapshotCanvas = <HTMLCanvasElement> document.getElementById('snapshot');
     var accept = document.getElementById('accept');
     var deny = document.getElementById('deny');
     var context = snapshotCanvas.getContext('2d');
@@ -176,7 +165,7 @@ export class AppComponent {
   }
   
   discardPicture(){
-    var snapshotCanvas = <HTMLCanvasElement>document.getElementById('snapshot');
+    var snapshotCanvas = <HTMLCanvasElement> document.getElementById('snapshot');
     var accept = document.getElementById('accept');
     var deny = document.getElementById('deny');
     var context = snapshotCanvas.getContext('2d');

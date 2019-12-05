@@ -1,0 +1,14 @@
+html, body{
+	margin: 0;
+	overflow: hidden;
+}
+@font-face {
+  font-family: maven;
+  src: url("assets/fonte/maven-pro-light-300.otf");
+}
+html{
+	font-family: maven;
+}
+::-webkit-scrollbar {
+    display: none;
+}
