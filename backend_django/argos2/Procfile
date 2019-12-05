@@ -1,0 +1,1 @@
+web: gunicorn argos2.wsgi
